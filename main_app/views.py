@@ -37,7 +37,7 @@ class ArticleListView(ListView):
         articles = []
         if response.status_code == 200:
             data = response.json()
-            print(data)
+            # print(data)
             for item in data['articles']:
                 article = Article(
                     title=item['title'],
