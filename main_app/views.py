@@ -26,10 +26,10 @@ class ArticleListView(ListView):
         # Fetch data from the News API
         url = 'https://newsapi.org/v2/everything'
         params = {
-            'q': 'Technology',
+            'q': 'en',
             'sortBy': 'popularity',
             'apiKey': settings.NEWS_API_KEY,
-            'pageSize': 10,
+            'pageSize': 9,
         }
         response = requests.get(url, params=params)
 
@@ -37,13 +37,12 @@ class ArticleListView(ListView):
         articles = []
         if response.status_code == 200:
             data = response.json()
-            # print(data)
             for item in data['articles']:
                 article = Article(
                     title=item['title'],
-                    author=item['author'],
+                    author=item.get('author', ''),
                     description=item['description'],
-                    content=item['content'],
+                    content=item.get('content', ''),
                     url=item['url'],
                     url_to_image=item['urlToImage'],
                     published_at=item['publishedAt'],

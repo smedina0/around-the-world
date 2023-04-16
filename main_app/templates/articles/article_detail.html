@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+{% block title %}<title>Dashboard | Around The World</title>{% endblock %}
+<h1>News Dashboard</h1>
+{% for article in articles %}
+    <div class="article">
+        <h2>{{ article.title }}</h2>
+        <p>Author: {{ article.author }}</p>
+        <p>Description: {{ article.description }}</p>
+        <a href="{{ article.url }}">Read more</a>
+    </div>
+{% endfor %}
+{% endblock %}
