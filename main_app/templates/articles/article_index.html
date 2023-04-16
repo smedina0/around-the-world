@@ -1,12 +1,13 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 {% block title %}<title>Dashboard | Around The World</title>{% endblock %}
 <h1>News Dashboard</h1>
 <h2>Trending</h2>
-{% if trending_article %}
+{% if trending_articles %}
 <div class="row">
+  {% for trending_article in trending_articles %}
   <div class="col s12 m6">
-    <a href="{{ trending_article.url }}" class="card-link"> <!-- Add the link here -->
+    <a href="{{ trending_article.url }}" class="card-link">
       <div class="card">
         <div class="card-image">
           {% if trending_article.url_to_image %}
@@ -20,13 +21,16 @@
           <p>{{ trending_article.description }}</p>
         </div>
         <div class="card-action">
-          <p>Read More</p> <!-- Remove the link from here -->
+          <p>Read More</p>
         </div>
       </div>
-    </a> 
+    </a>
   </div>
+  {% endfor %}
 </div>
 {% endif %}
+<h2>Top Headlines</h2>
+
 
 <div class="row">
 {% for article in articles %}

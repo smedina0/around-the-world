@@ -25,17 +25,17 @@ class ArticleListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         articles_data = self.get_queryset()
-        context['trending_article'] = articles_data['trending_article']
+        context['trending_articles'] = articles_data['trending_articles']
         context['articles'] = articles_data['articles']
         return context
 
     def get_queryset(self):
-        # Fetch a trending article using top-headlines
+        # Fetch 2 trending articles using top-headlines
         trending_url = 'https://newsapi.org/v2/top-headlines'
         trending_params = {
             'language': 'en',
             'apiKey': settings.NEWS_API_KEY,
-            'pageSize': 1,
+            'pageSize': 2,  # Increase the pageSize to 2
         }
         trending_response = requests.get(trending_url, params=trending_params)
 
@@ -49,12 +49,12 @@ class ArticleListView(ListView):
         }
         response = requests.get(url, params=params)
 
-        # Create Article instances without saving them to the database
-        articles = []
+        # Create Article instances for trending articles without saving them to the database
+        trending_articles = []
         if trending_response.status_code == 200:
             trending_data = trending_response.json()
             for item in trending_data['articles']:
-                trending_article = Article(
+                article = Article(
                     title=item['title'],
                     author=item.get('author', ''),
                     description=item['description'],
@@ -64,7 +64,10 @@ class ArticleListView(ListView):
                     published_at=item['publishedAt'],
                     source_name=item['source']['name'],
                 )
+                trending_articles.append(article)
 
+        # Create Article instances without saving them to the database
+        articles = []
         if response.status_code == 200:
             data = response.json()
             for item in data['articles']:
@@ -81,6 +84,6 @@ class ArticleListView(ListView):
                 articles.append(article)
 
         return {
-            'trending_article': trending_article if trending_response.status_code == 200 else None,
+            'trending_articles': trending_articles,
             'articles': articles,
         }
