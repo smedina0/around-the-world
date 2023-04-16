@@ -1,3 +1,8 @@
+/* reset page style border box */
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --color-primary: #347fc4;
   --color-secondary: #f038ff;
@@ -77,4 +82,66 @@ nav ul li a {
 ul.right li a {
   margin-right: 20px;
   font-size: 24px;
+}
+
+/* trending card */
+
+.card-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-horizontal .card-image {
+  width: 100%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.card-horizontal .card-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card.card-horizontal {
+  min-height: 350px;
+}
+
+.page-footer {
+  background-color: var(--color-background);
+}
+
+.card-stacked {
+  width: 50% !important;
+}
+
+.custom-horizontal-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  height: 200px;
+}
+
+.custom-horizontal-card .card-image {
+  width: 50%;
+  overflow: hidden;
+}
+
+.custom-horizontal-card .card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.custom-horizontal-card .card-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.trending-card {
+  height: 400px;
+  overflow: hidden;
 }

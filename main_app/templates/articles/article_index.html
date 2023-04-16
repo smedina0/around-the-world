@@ -2,6 +2,32 @@
 {% block content %}
 {% block title %}<title>Dashboard | Around The World</title>{% endblock %}
 <h1>News Dashboard</h1>
+<h2>Trending</h2>
+{% if trending_article %}
+<div class="row">
+  <div class="col s12 m6">
+    <a href="{{ trending_article.url }}" class="card-link"> <!-- Add the link here -->
+      <div class="card">
+        <div class="card-image">
+          {% if trending_article.url_to_image %}
+          <img src="{{ trending_article.url_to_image }}" alt="{{ trending_article.title }}">
+          {% endif %}
+        </div>
+        <div class="card-content black-text">
+          {% if trending_article.url_to_image %}
+          <h3>{{ trending_article.title }}</h3>
+          {% endif %}
+          <p>{{ trending_article.description }}</p>
+        </div>
+        <div class="card-action">
+          <p>Read More</p> <!-- Remove the link from here -->
+        </div>
+      </div>
+    </a> 
+  </div>
+</div>
+{% endif %}
+
 <div class="row">
 {% for article in articles %}
     <div class="col s12 m6 l4">
@@ -22,9 +48,7 @@
                     <p>Read More</p>
                 </div>
             </div>
-            
         </a>
-       
     </div>
 {% endfor %}
 </div>
