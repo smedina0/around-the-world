@@ -38,7 +38,7 @@ h3 {
 }
 /* Card */
 .card {
-  min-height: 675px;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
 }
@@ -123,15 +123,12 @@ ul.right li a {
   height: 200px;
 }
 
-.custom-horizontal-card .card-image {
-  width: 50%;
-  overflow: hidden;
-}
-
-.custom-horizontal-card .card-image img {
+.card-horizontal .card-image img {
   width: 100%;
   height: auto;
-  display: block;
+  max-width: 100%; /* Add this line */
+  max-height: 100%; /* Add this line */
+  object-fit: cover;
 }
 
 .custom-horizontal-card .card-content-container {

@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Article
 import requests
 from django.conf import settings
+import random
 
 # Create your views here.
 
@@ -36,16 +37,22 @@ class ArticleListView(ListView):
             'language': 'en',
             'apiKey': settings.NEWS_API_KEY,
             'pageSize': 2,  # Increase the pageSize to 2
+            'page': random.randint(1, 9),
         }
         trending_response = requests.get(trending_url, params=trending_params)
+
+        print("Trending response status code:", trending_response.status_code)
+        print("Trending response content:", trending_response.text)
 
         # Fetch popular articles using the everything endpoint
         url = 'https://newsapi.org/v2/everything'
         params = {
-            'q': 'en',
+            'q': 'news',
+            'language': 'en',
             'sortBy': 'popularity',
             'apiKey': settings.NEWS_API_KEY,
             'pageSize': 9,
+            'page': random.randint(1, 9),
         }
         response = requests.get(url, params=params)
 
