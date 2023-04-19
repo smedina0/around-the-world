@@ -27,6 +27,7 @@ main {
 }
 
 h1 {
+  color: var(--color-text);
 }
 
 h2 {

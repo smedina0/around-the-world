@@ -2,7 +2,7 @@ from django.shortcuts import render
 from . import views
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Article
+from .models import Article, AuthoredArticle
 import requests
 from django.conf import settings
 import random
@@ -73,7 +73,6 @@ class ArticleListView(ListView):
                 )
                 trending_articles.append(article)
 
-        # Create Article instances without saving them to the database
         articles = []
         if response.status_code == 200:
             data = response.json()
@@ -94,3 +93,9 @@ class ArticleListView(ListView):
             'trending_articles': trending_articles,
             'articles': articles,
         }
+
+
+class AuthoredArticleListView(ListView):
+    model = AuthoredArticle
+    context_object_name = 'authored_articles'
+    template_name = 'authored_articles/article_index.html'
