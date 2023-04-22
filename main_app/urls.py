@@ -9,4 +9,6 @@ urlpatterns = [
          name='authored_article'),
     path('authored_articles/<int:pk>',
          views.AuthoredArticleDetailView.as_view(), name='authored_article_detail'),
+    path('authored_articles/create/', views.AuthoredArticleCreateView.as_view(),
+         name='authored_article_create'),
 ]

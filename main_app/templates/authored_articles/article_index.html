@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 {% block title %}<title>Dashboard | Around The World</title>{% endblock %}
+<a href="{% url 'authored_article_create' %}">Create Article</a>
 <h1>My Articles</h1>
 {% for article in authored_articles %}
 <h2>{{ article.title }}</h2>

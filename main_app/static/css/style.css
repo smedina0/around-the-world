@@ -22,12 +22,14 @@ body {
 p {
   color: var(--color-text);
 }
+
 main {
   flex-grow: 1;
 }
 
 h1 {
   color: var(--color-text);
+  font-size: 30pt;
 }
 
 h2 {
@@ -37,6 +39,7 @@ h3 {
   font-size: 17pt;
   font-weight: bold;
 }
+
 /* Card */
 .card {
   min-height: 800px;
@@ -86,7 +89,6 @@ ul.right li a {
 }
 
 /* trending card */
-
 .card-horizontal {
   display: flex;
   flex-direction: row;
@@ -127,8 +129,8 @@ ul.right li a {
 .card-horizontal .card-image img {
   width: 100%;
   height: auto;
-  max-width: 100%; /* Add this line */
-  max-height: 100%; /* Add this line */
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
 }
 
@@ -142,4 +144,32 @@ ul.right li a {
 .trending-card {
   height: 400px;
   overflow: hidden;
+}
+
+/* New additions and adjustments */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.custom-card {
+  position: relative;
+}
+
+.custom-card-image {
+  position: relative;
+}
+
+.custom-card-image img.responsive-img {
+  width: 100%;
+}
+
+.custom-card-title {
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  margin-top: 20px;
 }

@@ -112,3 +112,12 @@ class AuthoredArticleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['authored_article'] = self.object
         return context
+
+
+class AuthoredArticleCreateView(CreateView):
+    model = AuthoredArticle
+    template_name = 'authored_articles/article_create.html'
+    fields = '__all__'
+
+    def get_absolute_url(self):
+        return reverse('article_detail', kwargs={'article_id': self.id})

@@ -1,5 +1,26 @@
 {% extends 'base.html' %}
+
 {% block content %}
   {% block title %}<title>{{ authored_article.title }} | Around The World</title>{% endblock %}
-  <h1>{{ authored_article.title }}</h1>
+  <div class="container-fluid">
+    <div class="custom-card">
+      <h1 class="custom-card-title">{{ authored_article.title }}</h1>
+      <div class="custom-card-image">
+        <img class="responsive-img" src="https://d3eeke16mv0lt7.cloudfront.net/sites/default/files/styles/article_hero_image__1_5x/public/field/image/web-links-testing-nikolay.jpg?itok=vG9GcMWd" alt="">
+      </div>
+      <div class="row">
+        <div class="col s12 m2 sidebar">
+          <a href="{{ authored_article.facebook_link }}">Facebook</a>
+          <a href="{{ authored_article.twitter_link }}">Twitter</a>
+          <a href="{{ authored_article.instagram_link }}">Instagram</a>
+          <a href="{{ authored_article.linkedin_link }}">LinkedIn</a>
+        </div>
+        <div class="col s12 m9">
+          <div class="card-content">
+            <p>test</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
