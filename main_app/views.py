@@ -99,3 +99,16 @@ class AuthoredArticleListView(ListView):
     model = AuthoredArticle
     context_object_name = 'authored_articles'
     template_name = 'authored_articles/article_index.html'
+
+    def get_queryset(self):
+        return AuthoredArticle.objects.all()
+
+
+class AuthoredArticleDetailView(DetailView):
+    model = AuthoredArticle
+    template_name = 'authored_articles/article_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['authored_article'] = self.object
+        return context

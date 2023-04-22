@@ -3,5 +3,7 @@
 <h1>My Articles</h1>
 {% for article in authored_articles %}
 <h2>{{ article.title }}</h2>
+<p>{{ article.description }}</p>
+<a href="{% url 'authored_article_detail' pk=article.pk %}">Read {{ article.title }}</a>
 {% endfor %}
 {% endblock %}
