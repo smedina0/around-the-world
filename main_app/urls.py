@@ -11,6 +11,10 @@ urlpatterns = [
          views.AuthoredArticleDetailView.as_view(), name='authored_article_detail'),
     path('authored_articles/create/', views.AuthoredArticleCreateView.as_view(),
          name='authored_article_create'),
-     path('authored_articles/<int:pk>/update/', views.AuthoredArticleUpdateView.as_view(), name='authored_article_update'),
-     path('authored_articles/<int:pk>/delete/', views.AuthoredArticleDeleteView.as_view(), name='authored_article_delete'),
+    path('authored_articles/<int:pk>/update/',
+         views.AuthoredArticleUpdateView.as_view(), name='authored_article_update'),
+    path('authored_articles/<int:pk>/delete/',
+         views.AuthoredArticleDeleteView.as_view(), name='authored_article_delete'),
+    path('authored_articles/<int:authored_article_id>/add_photo',
+         views.add_photo, name='add_photo'),
 ]

@@ -7,6 +7,8 @@ from .models import Article, AuthoredArticle
 import requests
 from django.conf import settings
 import random
+import boto3
+import uuid
 
 # Create your views here.
 
@@ -113,6 +115,24 @@ class AuthoredArticleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['authored_article'] = self.object
         return context
+
+
+def add_photo(request, authored_article_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + \
+            photo_file.name[photo_file.name.rfind('.'):]
+
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            Photo.objects.create(
+                url=url, authored_article_id=authored_article_id)
+        except Exception as error:
+            print('An error occurred uploading file to S3: ')
+            print(error)
+    return redirect('authored_article_detail', authored_article_id=authored_article_id)
 
 
 class AuthoredArticleCreateView(CreateView):
