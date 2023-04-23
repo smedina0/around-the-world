@@ -215,3 +215,18 @@ ul.right li a {
 .uppercase {
   text-transform: uppercase;
 }
+
+.btn {
+  background-color: #347fc4;
+}
+.btn:hover {
+  background-color: #2c6b9f;
+}
+
+.read-btn {
+  background-color: var(--color-primary);
+}
+
+.read-btn a {
+  color: var(--color-text);
+}

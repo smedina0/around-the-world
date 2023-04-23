@@ -50,9 +50,10 @@ INSTALLED_APPS = [
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
+        'toolbar': 'toolbar_Custom',
         'height': 300,
         'width': 800,
+        'autoParagraph': True,
         'toolbar_Custom': [
             ['Bold', 'Italic', 'Underline', 'Strike'],
             ['NumberedList', 'BulletedList', 'Blockquote'],
@@ -61,7 +62,6 @@ CKEDITOR_CONFIGS = {
             ['Maximize', 'ShowBlocks'],
             '/',
             ['Styles', 'Format'],
-            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['TextColor', 'BGColor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['Smiley', 'SpecialChar'],
@@ -91,18 +91,25 @@ CKEDITOR_CONFIGS = {
             {'name': 'Green Subtitle', 'element': 'span', 'styles': {
                 'color': 'green', 'font-size': '1.25em'}},
             {'name': 'Highlighted', 'element': 'span',
-                'styles': {'background-color': '#FFFF00'}},
+             'styles': {'background-color': '#FFFF00'}},
             {'name': 'Uppercase', 'element': 'span',
-                'styles': {'text-transform': 'uppercase'}},
+             'styles': {'text-transform': 'uppercase'}},
             {'name': 'Big', 'element': 'span',
              'styles': {'font-size': '1.5em'}},
             {'name': 'Bigger', 'element': 'span', 'styles': {'font-size': '2em'}},
             {'name': 'Small', 'element': 'span',
-                'styles': {'font-size': '0.75em'}},
+             'styles': {'font-size': '0.75em'}},
             {'name': 'Smaller', 'element': 'span',
-                'styles': {'font-size': '0.5em'}},
+             'styles': {'font-size': '0.5em'}},
+            {'name': 'Align left', 'element': 'p',
+                'styles': {'text-align': 'left'}},
+            {'name': 'Align center', 'element': 'p',
+                'styles': {'text-align': 'center'}},
+            {'name': 'Align right', 'element': 'p',
+                'styles': {'text-align': 'right'}},
         ],
         'format_tags': 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
+
     }
 }
 
