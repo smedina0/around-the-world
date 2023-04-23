@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -19,7 +20,7 @@ class AuthoredArticle(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
-    content = models.TextField()
+    content = RichTextField()
     facebook_link = models.URLField(max_length=255, blank=True, null=True)
     twitter_link = models.URLField(max_length=255, blank=True, null=True)
     instagram_link = models.URLField(max_length=255, blank=True, null=True)

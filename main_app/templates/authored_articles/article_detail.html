@@ -17,7 +17,11 @@
         </div>
         <div class="col s12 m9">
           <div class="card-content">
-            <p>test</p>
+            {{ authored_article.content|safe }}
+          </div>
+          <div class="card-action">
+            <a href="{% url 'authored_article_update' authored_article.id %}">Update</a>
+            <a href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
           </div>
         </div>
       </div>

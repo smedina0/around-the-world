@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import views
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Article, AuthoredArticle
@@ -121,3 +122,16 @@ class AuthoredArticleCreateView(CreateView):
 
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'article_id': self.id})
+
+
+class AuthoredArticleUpdateView(UpdateView):
+    model = AuthoredArticle
+    template_name = 'authored_articles/article_create.html'
+    fields = ('title', 'description', 'content', 'facebook_link',
+              'twitter_link', 'instagram_link', 'linkedin_link')
+
+
+class AuthoredArticleDeleteView(DeleteView):
+    model = AuthoredArticle
+    template_name = 'authored_articles/article_confirm_delete.html'
+    success_url = reverse_lazy('authored_article')

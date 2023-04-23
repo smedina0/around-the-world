@@ -20,10 +20,10 @@
     {% endblock %}
   </head>
   <body>
-    <header class="navbar">
+    <header class="navbar sticky-navbar">
       <nav class="nav-wrapper">
+        <a href="{% url 'article_list' %}" class="brand-logo"><img src="{% static 'images/The world studios.png' %}" alt="Logo" style="height: 64px; padding: 0 15px;"></a>
         <ul class="right">
-          <li><a href="{% url 'home' %}">Home</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li><a href="{% url 'article_list' %}">Recent News</a></li>
           <li><a href="{% url 'authored_article' %}">My Articles</a></li>

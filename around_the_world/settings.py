@@ -45,7 +45,67 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 ]
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike'],
+            ['NumberedList', 'BulletedList', 'Blockquote'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['RemoveFormat', 'Source'],
+            ['Maximize', 'ShowBlocks'],
+            '/',
+            ['Styles', 'Format'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['TextColor', 'BGColor'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['Smiley', 'SpecialChar'],
+        ],
+        'stylesSet': [
+            {'name': 'Red Title', 'element': 'span', 'styles': {'color': 'red'}},
+            {'name': 'Blue Title', 'element': 'span', 'styles': {'color': 'blue'}},
+            {'name': 'Warning', 'element': 'p', 'styles': {
+                'background-color': '#FFC107', 'padding': '1rem', 'border-radius': '4px'}},
+            {'name': 'Quote', 'element': 'p', 'styles': {
+                'background-color': 'yellow', 'font-style': 'italic'}},
+            {'name': 'Code', 'element': 'p', 'styles': {
+                'background-color': '#F7F7F7', 'font-family': 'monospace', 'font-size': '1em'}},
+            {'name': 'Big', 'element': 'p', 'styles': {'font-size': 'larger'}},
+            {'name': 'Small', 'element': 'p', 'styles': {'font-size': 'smaller'}},
+            {'name': 'Smiley', 'element': 'img', 'styles': {'border': 'none'}},
+            {'name': 'Thumbnail', 'element': 'img', 'styles': {'border': '1px solid #ddd',
+                                                               'border-radius': '4px', 'padding': '5px', 'width': '150px'}},
+            {'name': 'Table', 'element': 'table', 'styles': {
+                'border-collapse': 'collapse', 'border': '1px solid gray'}},
+            {'name': 'Table Heading', 'element': 'th', 'styles': {
+                'background-color': '#EEE', 'border': '1px solid gray', 'padding': '5px'}},
+            {'name': 'Table Row', 'element': 'tr', 'styles': {
+                'background-color': '#FFF', 'border': '1px solid gray', 'padding': '5px'}},
+            {'name': 'Table Cell', 'element': 'td', 'styles': {
+                'border': '1px solid gray', 'padding': '5px'}},
+            {'name': 'Green Subtitle', 'element': 'span', 'styles': {
+                'color': 'green', 'font-size': '1.25em'}},
+            {'name': 'Highlighted', 'element': 'span',
+                'styles': {'background-color': '#FFFF00'}},
+            {'name': 'Uppercase', 'element': 'span',
+                'styles': {'text-transform': 'uppercase'}},
+            {'name': 'Big', 'element': 'span',
+             'styles': {'font-size': '1.5em'}},
+            {'name': 'Bigger', 'element': 'span', 'styles': {'font-size': '2em'}},
+            {'name': 'Small', 'element': 'span',
+                'styles': {'font-size': '0.75em'}},
+            {'name': 'Smaller', 'element': 'span',
+                'styles': {'font-size': '0.5em'}},
+        ],
+        'format_tags': 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
+    }
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
