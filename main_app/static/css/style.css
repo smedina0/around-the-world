@@ -3,6 +3,17 @@
   box-sizing: border-box;
 }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
 :root {
   --color-primary: #347fc4;
   --color-secondary: #f038ff;
@@ -37,6 +48,9 @@ h1 {
 }
 
 h2 {
+  font-size: 20pt;
+  color: var(--color-text);
+  font-weight: bold;
 }
 
 h3 {
@@ -101,6 +115,7 @@ ul.right li a {
   font-size: 20px;
   /* border-right: 1px solid rgba(0, 0, 0, 0.5); */
   border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
 }
 
 /* trending card */
@@ -244,4 +259,26 @@ ul.right li a {
   color: black;
   display: block;
   margin-bottom: 5px;
+}
+
+/* Footer */
+
+footer {
+  border-top: #2d2e33 1px solid;
+}
+
+footer p {
+  margin-left: 15px;
+}
+
+footer a {
+  color: var(--color-text);
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+footer img {
+  margin-top: 30px;
+  width: auto;
+  height: 100px !important;
 }
