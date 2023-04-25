@@ -10,22 +10,22 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script src="{% static 'ckeditor/ckeditor.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" />
-
-
-
-<link rel="stylesheet" href="{% static 'ckeditor/content.css' %}">
-
+  
+    <link rel="stylesheet" href="{% static 'ckeditor/content.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     {% block title %}
     <title>Around The World</title>
     {% endblock %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
     <header class="navbar sticky-navbar">
-      <nav aria-label="site navigation" class="nav-wrapper">
+      {% comment %} <nav aria-label="site navigation" class="nav-wrapper">
         <a href="{% url 'article_list' %}" class="brand-logo"><img src="{% static 'images/The world studios.png' %}" alt="Logo" style="height: 64px; padding: 0 15px;">
           <span class="visually-hidden">Around The World Logo</span>
         </a>
@@ -37,8 +37,50 @@
           <li><a href="#">Logout</a></li>
           <li><a href="#">Login</a></li>
         </ul>
-      </nav>
+      </nav> {% endcomment %}
+
+
+    {% comment %} Test {% endcomment %}
+
+    <nav aria-label="site navigation">
+      <div class="nav-wrapper">
+        <a href="{% url 'article_list' %}" class="brand-logo"><img src="{% static 'images/The world studios.png' %}" alt="Logo" style="height: 50px; padding: 0 10px; margin-top:5px;">
+          <span class="visually-hidden">Around The World Logo</span>
+        </a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger right" aria-haspopup="true" aria-controls="mobile-demo"><i class="material-icons">dehaze</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'article_list' %}">Recent News</a></li>
+          <li><a href="{% url 'authored_article' %}">My Articles</a></li>
+          <li><a href="#">Sign Up </a></li>
+          <li><a href="#">Logout</a></li>
+          <li><a href="#">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+{% comment %} end test {% endcomment %}
+<ul class="sidenav" id="mobile-demo">
+  <li>
+    <a href="#" class="sidenav-close-btn" tabindex="-1">
+      <i class="material-icons">close</i> Close
+    </a>
+  </li>
+  <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'article_list' %}">Recent News</a></li>
+      <li><a href="{% url 'authored_article' %}">My Articles</a></li>
+      <li><a href="#">Sign Up </a></li>
+      <li><a href="#">Logout</a></li>
+      <li><a href="#">Login</a></li>
+</ul>
+
     </header>
+
+
+    {% comment %} Test {% endcomment %}
+  
+ 
+
+    {% comment %} End test {% endcomment %}
     <main class="container">
         {% block content %}
         {% endblock %}
@@ -70,5 +112,114 @@
         </div>
       </div>
     </footer>
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems);
+      });
+    
+      function toggleAriaHidden() {
+        var largeScreen = window.matchMedia("(min-width: 992px)");
+        var mobileNav = document.getElementById("mobile-demo");
+        var mainNav = document.querySelector(".nav-wrapper > ul");
+    
+        if (largeScreen.matches) {
+          mobileNav.setAttribute("aria-hidden", "true");
+          mainNav.setAttribute("aria-hidden", "false");
+        } else {
+          mobileNav.setAttribute("aria-hidden", "false");
+          mainNav.setAttribute("aria-hidden", "true");
+        }
+      }
+    
+      function onSidenavOpen() {
+        var mobileNav = document.getElementById("mobile-demo");
+        mobileNav.setAttribute("aria-hidden", "false");
+        var links = mobileNav.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+          links[i].setAttribute("tabindex", "0");
+        }
+      }
+    
+      function onSidenavClose() {
+        var mobileNav = document.getElementById("mobile-demo");
+        mobileNav.setAttribute("aria-hidden", "true");
+        var links = mobileNav.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+          links[i].setAttribute("tabindex", "-1");
+        }
+        var hamburgerTrigger = document.querySelector(".sidenav-trigger");
+        hamburgerTrigger.focus();
+      }
+      
+    
+      window.addEventListener("resize", toggleAriaHidden);
+      document.addEventListener("DOMContentLoaded", function () {
+        toggleAriaHidden();
+    
+        var elems = document.querySelectorAll(".sidenav");
+        var instances = M.Sidenav.init(elems, {
+          onOpenStart: onSidenavOpen,
+          onCloseStart: onSidenavClose,
+        });
+    
+        var closeBtn = document.querySelector(".sidenav-close-btn");
+        closeBtn.addEventListener("click", function () {
+          var sidenavInstance = M.Sidenav.getInstance(
+            document.getElementById("mobile-demo")
+          );
+          sidenavInstance.close();
+        });
+      });
+
+      function trapFocus(element) {
+        var focusableElements = element.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
+        );
+        var firstFocusableElement = focusableElements[0];
+        var lastFocusableElement = focusableElements[focusableElements.length - 1];
+      
+        element.addEventListener("keydown", function (e) {
+          var isTabPressed = e.key === "Tab" || e.keyCode === 9;
+      
+          if (!isTabPressed) {
+            return;
+          }
+      
+          if (e.shiftKey) {
+            // if shift + tab combination is pressed
+            // on the first focusable element, jump to the last one
+            if (document.activeElement === firstFocusableElement) {
+              lastFocusableElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            // if the tab key is pressed
+            // on the last focusable element, jump to the first one
+            if (document.activeElement === lastFocusableElement) {
+              firstFocusableElement.focus();
+              e.preventDefault();
+            }
+          }
+        });
+      }
+
+      function onSidenavOpen() {
+        var mobileNav = document.getElementById("mobile-demo");
+        mobileNav.setAttribute("aria-hidden", "false");
+        var links = mobileNav.getElementsByTagName("a");
+        for (var i = 0; i < links.length; i++) {
+          links[i].setAttribute("tabindex", "0");
+          links[i].addEventListener("focus", function (event) {
+            event.target.scrollIntoView({ block: "nearest" });
+          });
+        }
+        trapFocus(mobileNav);
+        links[0].focus();
+      }
+      
+      
+      
+    </script>
   </body>
 </html>
