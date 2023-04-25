@@ -25,7 +25,7 @@
   </head>
   <body>
     <header class="navbar sticky-navbar">
-      <nav class="nav-wrapper">
+      <nav aria-label="site navigation" class="nav-wrapper">
         <a href="{% url 'article_list' %}" class="brand-logo"><img src="{% static 'images/The world studios.png' %}" alt="Logo" style="height: 64px; padding: 0 15px;">
           <span class="visually-hidden">Around The World Logo</span>
         </a>
@@ -34,6 +34,7 @@
           <li><a href="{% url 'article_list' %}">Recent News</a></li>
           <li><a href="{% url 'authored_article' %}">My Articles</a></li>
           <li><a href="#">Sign Up </a></li>
+          <li><a href="#">Logout</a></li>
           <li><a href="#">Login</a></li>
         </ul>
       </nav>
@@ -50,20 +51,22 @@
             <span class="visually-hidden">Around The World Logo</span>
           </div>
           <div class="col l4 offset-l2 s12">
-            <h2>Important Links</h5>
+            <h2>ATW Nav</h2>
+            <div role="navigation" aria-label="Around the World Related Content">
             <ul>
-              <li><a href="#!">Link 1</a></li>
-              <li><a href="#!">Link 2</a></li>
-              <li><a href="#!">Link 3</a></li>
-              <li><a href="#!">Link 4</a></li>
+              <li><a href="#!">Contact</a></li>
+              <li><a href="#!">Site Map</a></li>
+              <li><a href="#!">Accessibility</a></li>
+              <li><a href="#!">Terms of Use</a></li>
             </ul>
+          </nav>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
           <p>Copyright &copy; All Rights Reserved Around The World 2023</p>
-        <a class="right" href="#!">More Links</a>
+        <a class="right" href="#!">Around The World</a>
         </div>
       </div>
     </footer>

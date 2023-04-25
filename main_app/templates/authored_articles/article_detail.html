@@ -29,8 +29,8 @@
             {{ authored_article.content|safe }}
           </div>
           <div>
-            <a class="btn" href="{% url 'authored_article_update' authored_article.id %}">Update</a>
-            <a class="btn" href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
+            <a class="btn updel" href="{% url 'authored_article_update' authored_article.id %}">Update</a>
+            <a class="btn updel" href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
           </div>
         </div>
       </div>

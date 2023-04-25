@@ -71,6 +71,12 @@ h3 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card-content a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
 p {
   font-size: 14pt;
 }
@@ -89,6 +95,10 @@ p {
   border: 2px solid black;
   padding: 3px;
   display: inline-block;
+}
+
+.updel {
+  font-size: 20px;
 }
 
 .nav-wrapper {
@@ -205,6 +215,10 @@ ul.right li a {
   margin-bottom: 20px;
 }
 
+.fab {
+  font-size: 50px;
+}
+
 .red-title {
   color: red;
 }
@@ -274,7 +288,7 @@ footer p {
 footer a {
   color: var(--color-text);
   text-decoration: underline;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 footer img {
