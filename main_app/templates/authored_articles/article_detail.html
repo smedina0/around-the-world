@@ -5,9 +5,13 @@
   <div class="container-fluid">
     <div class="custom-card">
       <h1 class="custom-card-title">{{ authored_article.title }}</h1>
-      <div class="custom-card-image">
-        <img class="responsive-img" src="https://d3eeke16mv0lt7.cloudfront.net/sites/default/files/styles/article_hero_image__1_5x/public/field/image/web-links-testing-nikolay.jpg?itok=vG9GcMWd" alt="">
+          {% for photo in authored_article.photo_set.all %}
+      <img src="{{ photo.url }}" alt="{{ card.name }}" class="responsive-img card-panel" />
+      {% empty %}
+      <div class="card-panel blue-text center-align">
+        No photos for this card
       </div>
+      {% endfor %}
       <div class="row">
         <div class="col s12 m2 sidebar">
           <a href="{{ authored_article.facebook_link }}">
@@ -29,6 +33,11 @@
             {{ authored_article.content|safe }}
           </div>
           <div>
+            <form action={% url 'add_photo' authored_article.id %} method="POST" class="card-panel" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="file" name="photo-file">
+              <input type="submit" value="Add Photo" class="btn blue">
+            </form>
             <a class="btn updel" href="{% url 'authored_article_update' authored_article.id %}">Update</a>
             <a class="btn updel" href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
           </div>

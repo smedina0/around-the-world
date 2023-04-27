@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    Signup
+</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Signup</h1>
+    {% if error_message %}
+    <p>{{ error_message }}</p>
+{% endif %}
+
+
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Signup" class="btn updel submitbtn">
+</form>
+{% endblock %}
+

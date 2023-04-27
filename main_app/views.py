@@ -1,14 +1,20 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import views
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Article, AuthoredArticle
+from .models import Article, AuthoredArticle, Photo
+from django.contrib.auth import login
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 import requests
 from django.conf import settings
 import random
 import boto3
 import uuid
+S3_BASE_URL = settings.S3_BASE_URL
+BUCKET = settings.BUCKET
 
 # Create your views here.
 
@@ -98,16 +104,17 @@ class ArticleListView(ListView):
         }
 
 
-class AuthoredArticleListView(ListView):
+class AuthoredArticleListView(LoginRequiredMixin, ListView):
     model = AuthoredArticle
     context_object_name = 'authored_articles'
     template_name = 'authored_articles/article_index.html'
 
     def get_queryset(self):
-        return AuthoredArticle.objects.all()
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user)
 
 
-class AuthoredArticleDetailView(DetailView):
+class AuthoredArticleDetailView(LoginRequiredMixin, DetailView):
     model = AuthoredArticle
     template_name = 'authored_articles/article_detail.html'
 
@@ -117,6 +124,7 @@ class AuthoredArticleDetailView(DetailView):
         return context
 
 
+@login_required
 def add_photo(request, authored_article_id):
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -132,26 +140,46 @@ def add_photo(request, authored_article_id):
         except Exception as error:
             print('An error occurred uploading file to S3: ')
             print(error)
-    return redirect('authored_article_detail', authored_article_id=authored_article_id)
+    return redirect('authored_article_detail', pk=authored_article_id)
 
 
-class AuthoredArticleCreateView(CreateView):
+class AuthoredArticleCreateView(LoginRequiredMixin, CreateView):
     model = AuthoredArticle
     template_name = 'authored_articles/article_create.html'
-    fields = '__all__'
+    fields = ('title', 'description', 'content', 'facebook_link',
+              'twitter_link', 'instagram_link', 'linkedin_link')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
     def get_absolute_url(self):
         return reverse('article_detail', kwargs={'article_id': self.id})
 
 
-class AuthoredArticleUpdateView(UpdateView):
+class AuthoredArticleUpdateView(LoginRequiredMixin, UpdateView):
     model = AuthoredArticle
     template_name = 'authored_articles/article_create.html'
     fields = ('title', 'description', 'content', 'facebook_link',
               'twitter_link', 'instagram_link', 'linkedin_link')
 
 
-class AuthoredArticleDeleteView(DeleteView):
+class AuthoredArticleDeleteView(LoginRequiredMixin, DeleteView):
     model = AuthoredArticle
     template_name = 'authored_articles/article_confirm_delete.html'
     success_url = reverse_lazy('authored_article')
+
+
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('authored_article')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})

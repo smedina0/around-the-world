@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,6 +26,7 @@ class AuthoredArticle(models.Model):
     twitter_link = models.URLField(max_length=255, blank=True, null=True)
     instagram_link = models.URLField(max_length=255, blank=True, null=True)
     linkedin_link = models.URLField(max_length=255, blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
