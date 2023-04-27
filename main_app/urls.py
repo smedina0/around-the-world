@@ -18,4 +18,6 @@ urlpatterns = [
     path('authored_articles/<int:authored_article_id>/add_photo',
          views.add_photo, name='add_photo'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('authored_article/<int:authored_article_id>/photo/<int:photo_id>/update/',
+         views.update_photo, name='update_photo'),
 ]

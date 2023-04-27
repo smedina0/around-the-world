@@ -8,6 +8,8 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
 import requests
 from django.conf import settings
 import random
@@ -183,3 +185,21 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', {'form': form, 'error_message': error_message})
+
+
+@login_required
+def update_photo(request, pk, photo_pk):
+    article = get_object_or_404(Article, pk=pk)
+    photo = get_object_or_404(Photo, pk=photo_pk)
+    if request.user == article.author:
+        if request.method == 'POST':
+            photo_form = PhotoForm(request.POST, request.FILES, instance=photo)
+            if photo_form.is_valid():
+                photo_form.save()
+                messages.success(request, f'Your photo has been updated!')
+                return redirect('article_detail', pk=article.pk)
+        else:
+            photo_form = PhotoForm(instance=photo)
+        return render(request, 'main_app/update_photo.html', {'photo_form': photo_form})
+    else:
+        return HttpResponse('You are not authorized to edit this article.')

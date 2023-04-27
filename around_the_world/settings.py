@@ -17,7 +17,7 @@ from pathlib import Path
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 
-S3_BASE_URL = 'https://around-the-world1.s3.amazonaws.com/'
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
 BUCKET = 'around-the-world1'
 
 # from dotenv import load_dotenv
