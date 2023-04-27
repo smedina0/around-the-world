@@ -5,12 +5,14 @@
   <div class="container-fluid">
     <div class="custom-card">
       <h1 class="custom-card-title">{{ authored_article.title }}</h1>
-          {% for photo in authored_article.photo_set.all %}
-      <img src="{{ photo.url }}" alt="{{ card.name }}" class="responsive-img card-panel" />
+      {% for photo in authored_article.photo_set.all %}
+        <img src="{{ photo.url }}" alt="{{ card.name }}" class="responsive-img image-container" />
       {% empty %}
-      <div class="card-panel blue-text center-align">
-        No photos for this card
-      </div>
+        {% if request.user == authored_article.user %}
+        <div class="card-panel blue-text center-align">
+          No photos for this card
+        </div>
+        {% endif %}
       {% endfor %}
       <div class="row">
         <div class="col s12 m2 sidebar">
@@ -27,20 +29,21 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div>
-        
         <div class="col s12 m9">
           <div class="card-content">
             {{ authored_article.content|safe }}
           </div>
-          <div>
-            <form action={% url 'add_photo' authored_article.id %} method="POST" class="card-panel" enctype="multipart/form-data">
-              {% csrf_token %}
-              <input type="file" name="photo-file">
-              <input type="submit" value="Add Photo" class="btn blue">
-            </form>
-            <a class="btn updel" href="{% url 'authored_article_update' authored_article.id %}">Update</a>
-            <a class="btn updel" href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
-          </div>
+          {% if request.user == authored_article.user %}
+            <div>
+              <form action={% url 'add_photo' authored_article.id %} method="POST" class="card-panel" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="file" name="photo-file">
+                <input type="submit" value="Add Photo" class="btn blue">
+              </form>
+              <a class="btn updel" href="{% url 'authored_article_update' authored_article.id %}">Update</a>
+              <a class="btn updel" href="{% url 'authored_article_delete' authored_article.id %}">Delete</a>
+            </div>
+          {% endif %}
         </div>
       </div>
     </div>

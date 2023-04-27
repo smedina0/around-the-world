@@ -20,4 +20,5 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name='signup'),
     path('authored_article/<int:authored_article_id>/photo/<int:photo_id>/update/',
          views.update_photo, name='update_photo'),
+    path('all/', views.all_authored_articles, name='all_authored_articles'),
 ]

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+  {% block title %}<title>All Authored Articles | Around The World</title>{% endblock %}
+  <div class="container">
+    <h1>All Authored Articles</h1>
+    {% for article in articles %}
+    <div class="card-panel">
+      <div class="row valign-wrapper">
+        <div class="col s12 m4">
+          {% if article.photo_set.all %}
+          <img src="{{ article.photo_set.first.url }}" class="responsive-img" alt="">
+          {% else %}
+          <img src="{% static 'images/default-image.jpg' %}" class="responsive-img" alt=""> 
+          {% endif %}
+        </div>
+        <div class="col s12 m8">
+          <h2>{{ article.title }}</h2>
+          <p>{{ article.description }}</p>
+          <p><a href="{{ article.get_absolute_url }}">Read more...</a></p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}

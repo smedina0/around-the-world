@@ -29,6 +29,12 @@ def about(request):
     return render(request, 'about.html')
 
 
+def all_authored_articles(request):
+    articles = AuthoredArticle.objects.all()
+    context = {'articles': articles}
+    return render(request, 'all_authored_articles.html', context)
+
+
 class ArticleListView(ListView):
     model = Article
     context_object_name = 'articles'
@@ -116,7 +122,7 @@ class AuthoredArticleListView(LoginRequiredMixin, ListView):
         return queryset.filter(user=self.request.user)
 
 
-class AuthoredArticleDetailView(LoginRequiredMixin, DetailView):
+class AuthoredArticleDetailView(DetailView):
     model = AuthoredArticle
     template_name = 'authored_articles/article_detail.html'
 
@@ -137,8 +143,12 @@ def add_photo(request, authored_article_id):
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            Photo.objects.create(
-                url=url, authored_article_id=authored_article_id)
+            authored_article = get_object_or_404(
+                AuthoredArticle, pk=authored_article_id)
+            photo, created = Photo.objects.get_or_create(
+                authored_article=authored_article)
+            photo.url = url
+            photo.save()
         except Exception as error:
             print('An error occurred uploading file to S3: ')
             print(error)
@@ -188,18 +198,24 @@ def signup(request):
 
 
 @login_required
-def update_photo(request, pk, photo_pk):
-    article = get_object_or_404(Article, pk=pk)
-    photo = get_object_or_404(Photo, pk=photo_pk)
-    if request.user == article.author:
-        if request.method == 'POST':
-            photo_form = PhotoForm(request.POST, request.FILES, instance=photo)
-            if photo_form.is_valid():
-                photo_form.save()
+def update_photo(request, authored_article_id):
+    authored_article = get_object_or_404(
+        AuthoredArticle, pk=authored_article_id)
+    photo = get_object_or_404(Photo, authored_article=authored_article)
+    if request.method == 'POST':
+        photo_file = request.FILES.get('photo-file', None)
+        if photo_file:
+            s3 = boto3.client('s3')
+            key = uuid.uuid4().hex[:6] + \
+                photo_file.name[photo_file.name.rfind('.'):]
+
+            try:
+                s3.upload_fileobj(photo_file, BUCKET, key)
+                url = f"{S3_BASE_URL}{BUCKET}/{key}"
+                photo.url = url
+                photo.save()
                 messages.success(request, f'Your photo has been updated!')
-                return redirect('article_detail', pk=article.pk)
-        else:
-            photo_form = PhotoForm(instance=photo)
-        return render(request, 'main_app/update_photo.html', {'photo_form': photo_form})
-    else:
-        return HttpResponse('You are not authorized to edit this article.')
+            except Exception as error:
+                print('An error occurred uploading file to S3: ')
+                print(error)
+    return redirect('authored_article_detail', pk=authored_article_id)
