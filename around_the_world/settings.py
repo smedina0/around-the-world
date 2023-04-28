@@ -149,7 +149,11 @@ WSGI_APPLICATION = 'around_the_world.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'around_the_world',
+        'NAME': 'smedina2494/around-the-world',
+        'USER': os.environ['USER'],
+        'PASSWORD': os.environ['PASSWORD'],
+        'HOST': 'db.bit.io',
+        'PORT': '5432',
     }
 }
 
