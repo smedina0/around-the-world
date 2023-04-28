@@ -408,3 +408,20 @@ p.align-right {
     flex-wrap: wrap;
   }
 }
+
+/* All Mobile Article View */
+
+@media (max-width: 767px) {
+  .article-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article-container .col.s12.m4 {
+    order: 1;
+  }
+
+  .article-container .col.s12.m8 {
+    order: 2;
+  }
+}
