@@ -16,15 +16,13 @@ This application is about news and articles. It provides access to a page that m
 
 ## Screenshot
 
-![Images of my project interface]()
+![Images of my project interface](staticfiles/images/About.png)
 
-![Images of my project interface](https://res.cloudinary.com/dajbkbomv/image/upload/v1675635274/Github%20readme%20images/Screenshot_2023-02-05_at_4.50.18_PM_dhvigx.png)
+![Images of my project interface](staticfiles/images/All_Authored_Articles.png)
 
-![Images of my project interface](https://res.cloudinary.com/dajbkbomv/image/upload/v1675635273/Github%20readme%20images/Screenshot_2023-02-05_at_4.50.29_PM_mgitgl.png)
+![Images of my project interface](staticfiles/images/Article_detail.png)
 
-![Images of my project interface](https://res.cloudinary.com/dajbkbomv/image/upload/v1675635273/Github%20readme%20images/Screenshot_2023-02-05_at_4.50.45_PM_sumuga.png)
-
-![Images of my project interface](https://res.cloudinary.com/dajbkbomv/image/upload/v1675635271/Github%20readme%20images/Screenshot_2023-02-05_at_4.50.35_PM_lhmkjj.png)
+![Images of my project interface](staticfiles/images/News_Dashboard.png)
 
 ## Getting Started
 
