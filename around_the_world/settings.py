@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import django_heroku
 import environ
 import os
 from pathlib import Path
@@ -37,9 +38,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://around-the-world.herokuapp.com']
 
 
 # Application definition
@@ -199,5 +200,4 @@ NEWS_API_KEY = os.getenv('NEWS_API_KEY')
 
 # Configure Django to work within heroku production environment
 
-import django_heroku
 django_heroku.settings(locals())
