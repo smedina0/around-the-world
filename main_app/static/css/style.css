@@ -325,3 +325,55 @@ textarea {
   display: block;
   margin: 0 auto;
 }
+
+/* Justification */
+
+h1.align-left,
+h2.align-left,
+h3.align-left,
+h4.align-left,
+h5.align-left,
+h6.align-left,
+p.align-left {
+  text-align: left;
+}
+
+h1.align-center,
+h2.align-center,
+h3.align-center,
+h4.align-center,
+h5.align-center,
+h6.align-center,
+p.align-center {
+  text-align: center;
+}
+
+h1.align-right,
+h2.align-right,
+h3.align-right,
+h4.align-right,
+h5.align-right,
+h6.align-right,
+p.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.cke_editable {
+  background-color: white;
+}
+
+.cke_editable:focus {
+  outline: none;
+}

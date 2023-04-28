@@ -72,51 +72,41 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['Smiley', 'SpecialChar'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
         ],
         'stylesSet': [
             {'name': 'Red Title', 'element': 'span', 'styles': {'color': 'red'}},
             {'name': 'Blue Title', 'element': 'span', 'styles': {'color': 'blue'}},
-            {'name': 'Warning', 'element': 'p', 'styles': {
+            {'name': 'Warning', 'element': 'span', 'styles': {
                 'background-color': '#FFC107', 'padding': '1rem', 'border-radius': '4px'}},
-            {'name': 'Quote', 'element': 'p', 'styles': {
+            {'name': 'Quote', 'element': 'span', 'styles': {
                 'background-color': 'yellow', 'font-style': 'italic'}},
-            {'name': 'Code', 'element': 'p', 'styles': {
+            {'name': 'Code', 'element': 'span', 'styles': {
                 'background-color': '#F7F7F7', 'font-family': 'monospace', 'font-size': '1em'}},
-            {'name': 'Big', 'element': 'p', 'styles': {'font-size': 'larger'}},
-            {'name': 'Small', 'element': 'p', 'styles': {'font-size': 'smaller'}},
+            {'name': 'Big', 'element': 'span', 'styles': {'font-size': 'larger'}},
+            {'name': 'Small', 'element': 'span',
+                'styles': {'font-size': 'smaller'}},
             {'name': 'Smiley', 'element': 'img', 'styles': {'border': 'none'}},
             {'name': 'Thumbnail', 'element': 'img', 'styles': {'border': '1px solid #ddd',
                                                                'border-radius': '4px', 'padding': '5px', 'width': '150px'}},
-            {'name': 'Table', 'element': 'table', 'styles': {
-                'border-collapse': 'collapse', 'border': '1px solid gray'}},
-            {'name': 'Table Heading', 'element': 'th', 'styles': {
-                'background-color': '#EEE', 'border': '1px solid gray', 'padding': '5px'}},
-            {'name': 'Table Row', 'element': 'tr', 'styles': {
-                'background-color': '#FFF', 'border': '1px solid gray', 'padding': '5px'}},
-            {'name': 'Table Cell', 'element': 'td', 'styles': {
-                'border': '1px solid gray', 'padding': '5px'}},
             {'name': 'Green Subtitle', 'element': 'span', 'styles': {
                 'color': 'green', 'font-size': '1.25em'}},
             {'name': 'Highlighted', 'element': 'span',
              'styles': {'background-color': '#FFFF00'}},
             {'name': 'Uppercase', 'element': 'span',
              'styles': {'text-transform': 'uppercase'}},
-            {'name': 'Big', 'element': 'span',
-             'styles': {'font-size': '1.5em'}},
             {'name': 'Bigger', 'element': 'span', 'styles': {'font-size': '2em'}},
-            {'name': 'Small', 'element': 'span',
-             'styles': {'font-size': '0.75em'}},
             {'name': 'Smaller', 'element': 'span',
              'styles': {'font-size': '0.5em'}},
-            {'name': 'Align left', 'element': 'p',
-                'styles': {'text-align': 'left'}},
-            {'name': 'Align center', 'element': 'p',
-                'styles': {'text-align': 'center'}},
-            {'name': 'Align right', 'element': 'p',
-                'styles': {'text-align': 'right'}},
+            {'name': 'Align left', 'element': ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+                'attributes': {'class': 'align-left'}},
+            {'name': 'Align center', 'element': ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+                'attributes': {'class': 'align-center'}},
+            {'name': 'Align right', 'element': ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+                'attributes': {'class': 'align-right'}},
         ],
         'format_tags': 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
-
+        'contentsCss': '/static/css/style.css',
     }
 }
 
