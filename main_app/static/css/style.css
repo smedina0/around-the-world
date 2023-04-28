@@ -397,3 +397,14 @@ p.align-right {
 .django-ckeditor-widget {
   width: 100% !important;
 }
+
+/* social media icons */
+
+@media (max-width: 767px) {
+  .social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+}
