@@ -1,0 +1,399 @@
+/* reset page style border box */
+* {
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+*:focus {
+  outline: 2px dashed #2d2e33;
+}
+
+:root {
+  --color-primary: #347fc4;
+  --color-secondary: #f038ff;
+  --color-tertiary: #64e9ee;
+  --color-text: #2d2e33;
+  --color-background: #decdc9;
+}
+
+header {
+  margin-bottom: 10px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  color: var(--color-text);
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1 {
+  color: var(--color-text);
+  font-size: 30pt;
+}
+
+h2 {
+  font-size: 20pt;
+  color: var(--color-text);
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 17pt;
+  font-weight: bold;
+}
+
+/* Card */
+.card {
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-content {
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-content a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+p {
+  font-size: 14pt;
+}
+.card p {
+  font-size: 12pt;
+}
+
+.card-action {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.card-action p {
+  color: black;
+  border: 2px solid black;
+  padding: 3px;
+  display: inline-block;
+}
+
+.updel {
+  font-size: 20px;
+}
+
+.submitbtn {
+  margin-bottom: 30px;
+}
+
+.nav-wrapper {
+  background-color: var(--color-background);
+}
+
+nav {
+  box-shadow: none;
+}
+
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+nav ul li a {
+  color: var(--color-text);
+}
+
+ul.right li a {
+  /* margin-right: 20px; */
+  font-size: 20px;
+  /* border-right: 1px solid rgba(0, 0, 0, 0.5); */
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.sidenav-trigger {
+  color: var(--color-text);
+}
+
+/* trending card */
+.card-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.card-horizontal .card-image {
+  width: 100%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.card-horizontal .card-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.card.card-horizontal {
+  min-height: 350px;
+}
+
+.page-footer {
+  background-color: var(--color-background);
+}
+
+.card-stacked {
+  width: 50% !important;
+}
+
+.custom-horizontal-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  height: 200px;
+}
+
+.card-horizontal .card-image img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.custom-horizontal-card .card-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.trending-card {
+  height: 400px;
+  overflow: hidden;
+}
+
+/* New additions and adjustments */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.custom-card {
+  position: relative;
+}
+
+.custom-card-image {
+  position: relative;
+}
+
+.custom-card-image img.responsive-img {
+  width: 100%;
+}
+
+.custom-card-title {
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 20px;
+}
+
+.sidebar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.fab {
+  font-size: 50px;
+}
+
+.red-title {
+  color: red;
+}
+
+.blue-title {
+  color: blue;
+}
+
+.warning {
+  background-color: #ffc107;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.green-subtitle {
+  color: green;
+  font-size: 1.25em;
+}
+
+.highlighted {
+  background-color: #ffff00;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.btn {
+  background-color: #347fc4;
+}
+.btn:hover {
+  background-color: #2c6b9f;
+}
+
+.read-btn {
+  background-color: var(--color-primary);
+  color: white !important;
+}
+
+.read-btn a {
+  color: var(--color-text);
+}
+
+.sidebar a {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: black;
+}
+
+.card-action a {
+  color: black;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Footer */
+
+footer {
+  border-top: #2d2e33 1px solid;
+}
+
+footer p {
+  margin-left: 15px;
+}
+
+footer a {
+  color: var(--color-text);
+  text-decoration: underline;
+  font-size: 17px;
+}
+
+footer img {
+  margin-top: 30px;
+  width: auto;
+  height: 100px !important;
+}
+
+/* form submission styling */
+
+form label {
+  color: var(--color-text);
+  font-size: 20px;
+}
+
+textarea {
+  height: 100px;
+  margin-top: 10px;
+}
+
+.image-container {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Justification */
+
+h1.align-left,
+h2.align-left,
+h3.align-left,
+h4.align-left,
+h5.align-left,
+h6.align-left,
+p.align-left {
+  text-align: left;
+}
+
+h1.align-center,
+h2.align-center,
+h3.align-center,
+h4.align-center,
+h5.align-center,
+h6.align-center,
+p.align-center {
+  text-align: center;
+}
+
+h1.align-right,
+h2.align-right,
+h3.align-right,
+h4.align-right,
+h5.align-right,
+h6.align-right,
+p.align-right {
+  text-align: right;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.cke_editable {
+  background-color: white;
+}
+
+.cke_editable:focus {
+  outline: none;
+}
+
+.cke {
+  width: 100% !important;
+}
+
+.cke_inner {
+  width: 100% !important;
+}
+
+.cke_contents {
+  width: 100% !important;
+}
+
+.cke_wysiwyg_div {
+  width: 100% !important;
+}
+
+.django-ckeditor-widget {
+  width: 100% !important;
+}
