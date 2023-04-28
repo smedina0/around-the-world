@@ -18,6 +18,7 @@
         </div>
         <div class="col s12 m8">
           <h2>{{ article.title }}</h2>
+          <p>By: {{ article.user.username }}</p> <!-- Display the author's username here -->
           <p>{{ article.description }}</p>
           <p><a href="{{ article.get_absolute_url }}">Read more...</a></p>
         </div>

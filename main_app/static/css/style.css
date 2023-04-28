@@ -398,6 +398,10 @@ p.align-right {
   width: 100% !important;
 }
 
+.cke_combopanel {
+  max-width: 300px;
+}
+
 /* social media icons */
 
 @media (max-width: 767px) {
