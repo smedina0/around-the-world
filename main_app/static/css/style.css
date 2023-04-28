@@ -402,6 +402,11 @@ p.align-right {
   max-width: 300px;
 }
 
+.card-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* social media icons */
 
 @media (max-width: 767px) {
