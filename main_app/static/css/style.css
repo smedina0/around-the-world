@@ -377,3 +377,23 @@ p.align-right {
 .cke_editable:focus {
   outline: none;
 }
+
+.cke {
+  width: 100% !important;
+}
+
+.cke_inner {
+  width: 100% !important;
+}
+
+.cke_contents {
+  width: 100% !important;
+}
+
+.cke_wysiwyg_div {
+  width: 100% !important;
+}
+
+.django-ckeditor-widget {
+  width: 100% !important;
+}
