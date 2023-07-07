@@ -26,7 +26,7 @@ This application is about news and articles. It provides access to a page that m
 
 ## Getting Started
 
-[Link to Around The World](https://around-the-world.herokuapp.com/all/)
+[Link to Around The World](https://around-the-world.herokuapp.com/)
 
 ## Future Enhancements
 
