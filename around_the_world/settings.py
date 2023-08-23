@@ -146,17 +146,18 @@ WSGI_APPLICATION = 'around_the_world.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# To use Neon with Django, you have to create a Project on Neon and specify the project connection settings in your settings.py in the same way as for standalone Postgres.
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'smedina2494/around-the-world',
-        'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'HOST': 'db.bit.io',
+        'NAME': 'news',
+        'USER': 'smedina0',
+        'PASSWORD': 'efOus9qy3JDp',
+        'HOST': 'ep-shy-pond-79833197.us-east-2.aws.neon.tech',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
