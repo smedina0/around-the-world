@@ -152,10 +152,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'news',
-        'USER': os.environ["USER"],
-        'PASSWORD': os.environ["PASSWORD"],
-        'HOST': os.environ["HOST"],
-        'PORT': '5432',
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
     }
 }
 
