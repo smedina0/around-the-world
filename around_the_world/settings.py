@@ -154,7 +154,7 @@ DATABASES = {
         'NAME': 'news',
         'USER': os.environ["USER"],
         'PASSWORD': os.environ["PASSWORD"],
-        'HOST': 'ep-shy-pond-79833197.us-east-2.aws.neon.tech',
+        'HOST': os.environ["HOST"],
         'PORT': '5432',
     }
 }
